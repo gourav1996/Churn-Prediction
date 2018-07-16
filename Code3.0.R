@@ -35,6 +35,28 @@ str(Train_data)
 #  number.customer.service.calls: int  1 1 0 2 3 0 3 0 1 0 ...
 #  Churn                        : Factor w/ 2 levels " False."," True.": 1 1 1 1 1 1 1 1 1 1 ...
 
+table(Train_data$Churn)
+# Churn
+# False. : 2850
+# True. :   483
+
+prop.table(table(Train_data$Churn))
+# False.     True. 
+# 0.8550855 0.1449145 
+
+# Number of False data points are much higher than  number True data points
+# This condition show Imbalance in the data set.
+# Because of this imbalance Model prediction accureacy for True would be the worng and 
+# The Model is Baies toward False data points.
+library(ROSE) # (Random Over Sampling Examples)
+library(DMwR)
+
+#over sampling
+data_balanced_over <- ovun.sample(Churn ~ ., data = Train_data, method = "over",N = 5700)$data
+table(data_balanced_over$Churn)
+# False.   True. 
+# 2850    2850
+
 dim(Train_data)
 head(Train_data, 5)
 
