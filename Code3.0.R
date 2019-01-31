@@ -1,5 +1,5 @@
 rm(list=ls(all=T))
-setwd("O:/edWisor/Project1")
+setwd("O:/path")
 getwd()
 
 #************************* Read the data****************************************
